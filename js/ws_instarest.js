@@ -119,6 +119,8 @@
 
                 //コメントエリアをリサイズ可能に設定
                 self.$el.find('.comment-text').resizeTextarea();
+
+                return this;
             },
 
             //並び替え処理
@@ -207,6 +209,8 @@
 
                 //時間をいい感じに表示
                 this.$el.find('.time').magicTime();
+
+                render this;
             }
 
         });
