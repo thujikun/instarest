@@ -112,9 +112,7 @@
                 });
 
                 //並び替える
-                self.$el.shapeshift({
-                    enableAnimationOnInit: true
-                });
+                self.layout();
 
                 //時間をいい感じに表示
                 self.$el.find('.time').magicTime();
@@ -125,7 +123,9 @@
 
             //並び替え処理
             layout: function() {
-                this.$el.shapeshift();
+                this.$el.shapeshift({
+                    enableAnimationOnInit: true
+                });
             }
         });
 
