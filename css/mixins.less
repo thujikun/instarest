@@ -1,0 +1,129 @@
+.border-radius(@val: 2px) {
+    -webkit-border-radius: @val;
+    -moz-border-radius: @val;
+    -o-border-radius: @val;
+    border-radius: @val;
+}
+
+.box-sizing(@val) {
+    -webkit-box-sizing: @val;
+       -moz-box-sizing: @val;
+            box-sizing: @val;
+}
+
+.display-box() {
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -o-box;
+    display: box;
+    display: flexbox;
+}
+
+.box-flex(@val) {
+    -webkit-box-flex: @val;
+    -moz-box-flex: @val;
+    -o-box-flex: @val;
+    ms-flex: @val;
+    flex: @val;
+    box-flex: @val;
+}
+
+.transition(@properties) {
+    -webkit-transition: @properties;
+       -moz-transition: @properties;
+        -ms-transition: @properties;
+         -o-transition: @properties;
+            transition: @properties;
+}
+
+.transform(@properties) {
+    -webkit-transform: @properties;
+       -moz-transform: @properties;
+        -ms-transform: @properties;
+         -o-transform: @properties;
+            transform: @properties;
+}
+
+.animation(@properties) {
+    -webkit-animation: @properties;
+       -moz-animation: @properties;
+        -ms-animation: @properties;
+         -o-animation: @properties;
+            animation: @properties;
+}
+
+.opacity(@opacity) {
+    @opacityPercentage: @opacity * 100;
+    opacity: @opacity;
+    filter: "alpha(opacity=@{opacityPercentage})";
+    -ms-filter: "alpha(opacity=@{opacityPercentage})";
+}
+
+.linear-gradient(@startColor, @endColor) {
+    background: -webkit-gradient(linear, center top, center bottom, from(@startColor), to(@endColor));
+    background: -webkit-linear-gradient(top, @startColor, @endColor);
+    background: -moz-linear-gradient(top, @startColor, @endColor);
+    background: -o-linear-gradient(top, @startColor, @endColor);
+    background: linear-gradient(to bottom, @startColor, @endColor);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@{startColor}', endColorstr='@{endColor}',GradientType=0 );
+}
+
+.box-shadow(@val) {
+    -webkit-box-shadow: @val;
+    -moz-box-shadow: @val;
+    -o-box-shadow: @val;
+    box-shadow: @val;
+}
+
+.clearfix() {
+    &:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+}
+
+.bgRoom() {
+    background: url(/img/bg_room.gif);
+}
+
+.roomButton() {
+    display: inline-block;
+    min-width: 160px;
+    min-height: 50px;
+    line-height: 50px;
+    .border-radius(4px);
+    border: none;
+    padding: 0 20px;
+    font-size: 16px;
+    font-weight: normal;
+    text-align: center;
+    cursor: pointer;
+    color: #ffffff;
+
+    &:hover {
+        text-decoration: none;
+        color: #ffffff;
+    }
+}
+
+.roomButtonMini() {
+    display: inline-block;
+    min-width: 100px;
+    min-height: 24px;
+    line-height: 24px;
+    .border-radius(4px);
+    border: none;
+    padding: 0 20px;
+    font-size: 16px;
+    font-weight: normal;
+    text-align: center;
+    font-size: 12px;
+    cursor: pointer;
+    color: #ffffff;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
