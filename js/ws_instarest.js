@@ -157,7 +157,8 @@
                 var form = $(e.target),
                     commentModel = new CommentModel( {
                         id: idCreator.getId(),
-                        text: form.find('.comment-text').val()
+                        text: form.find('.comment-text').val(),
+                        created_time: Math.floor(new Date().getTime() / 1000) + ''
                     });
 
                 //コメントmodelをリストに追加
@@ -178,8 +179,7 @@
                 from: {
                     full_name: 'Mickey',
                     profile_picture: 'http://img2.blogs.yahoo.co.jp/ybi/1/cd/b8/riocimarron/folder/224110/img_224110_8995454_0?1257512276'
-                },
-                created_time: Math.floor(new Date().getTime() / 1000) + ''
+                }
             }
         });
 
