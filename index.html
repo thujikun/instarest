@@ -7,7 +7,7 @@
         <link href="http://todc.github.com/todc-bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
         <link href="http://todc.github.com/todc-bootstrap/assets/css/docs.css" rel="stylesheet">
         <link href="http://todc.github.com/todc-bootstrap/assets/js/google-code-prettify/prettify.css" rel="stylesheet">
-        <link rel="stylesheet" href="css/ws_instagram.css">
+        <link rel="stylesheet" href="css/ws_instarest.css">
         <title>backbone workshop</title>
     </head>
     <body id="rakuten">
@@ -36,7 +36,7 @@
                                     <a href="../level2">level2</a>
                                 </li>
                                 <li>
-                                    <a href="../instagram">instagram</a>
+                                    <a href="../instarest">instarest</a>
                                 </li>
                             </ul>
                         </div>
@@ -46,8 +46,8 @@
         </header>
         <article>
             <div id="container">
-                <ul id="instagram" class="loading">
-                    <script type="text/template" id="instagram-template">
+                <ul id="instarest" class="loading">
+                    <script type="text/template" id="instarest-template">
                         <%
                             var i,
                                 length;
@@ -59,7 +59,7 @@
                             <ul class="comment-list">
                                 <% for(i = 0, length = comments.data.length; i < length; i++) { 
                                     var comment = comments.data[i],
-                                        template = _.template($('#instagram-comment-template').html()),
+                                        template = _.template($('#instarest-comment-template').html()),
                                          commentHtml = template(comment);
                                 %>
                                 <%= commentHtml %>
@@ -71,7 +71,7 @@
                             </form>
                         </li>
                     </script>
-                    <script type="text/template" id="instagram-comment-template">
+                    <script type="text/template" id="instarest-comment-template">
                         <li id="<%= id %>">
                             <div class="profile"><img src="<%= from.profile_picture %>" alt="<%= from.full_name %>"></div>
                             <div class="comment">
@@ -103,6 +103,6 @@
         <script src="http://backbonejs.org/backbone-min.js"></script>
         <script src="http://mcpants.github.com/jquery.shapeshift/core/jquery.shapeshift.min.js"></script>
         <script src="js/myplugin.js"></script>
-        <script src="js/ws_instagram.js"></script>
+        <script src="js/ws_instarest.js"></script>
     </body>
 </html>

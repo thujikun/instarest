@@ -37,7 +37,7 @@
         //Instagramの写真のView
         InstagramListView = Backbone.View.extend( {
             // このviewのwrapper
-            el: '#instagram',
+            el: '#instarest',
 
             //イベント定義
             events: {
@@ -89,7 +89,7 @@
             },
 
             //テンプレート
-            template: _.template($('#instagram-template').html()),
+            template: _.template($('#instarest-template').html()),
 
             //写真リストをレンダリング
             renderInstagram: function(collection) {
@@ -191,7 +191,7 @@
         //コメントリストのview
         CommentListView = Backbone.View.extend( {
 
-            template: _.template($('#instagram-comment-template').html()),
+            template: _.template($('#instarest-comment-template').html()),
 
             //初期処理
             initialize: function() {
