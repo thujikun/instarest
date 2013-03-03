@@ -20,7 +20,11 @@
             CommentListView;
 
         //Instagramの写真ごとのmodel
-        InstagramModel = Backbone.Model.extend();
+        InstagramModel = Backbone.Model.extend({
+            defaults: {
+                new_comment: ''
+            }
+        });
 
         //Instagramの写真ごとのmodelの配列
         InstagramCollection = Backbone.Collection.extend( {
@@ -44,6 +48,8 @@
                 //カスタムスクロールイベント
                 'scrollEnd': 'getInstagram'
             },
+
+             model: InstagramModel,
 
             //初期処理。newするとまずこれが動く
             initialize: function() {
@@ -152,24 +158,34 @@
                     el: this.$el.find('.comment-list'),
                     collection: this.commentListCollection
                 });
+
+                this.model.on('change:new_comment', this.renderComment, this);
             },
 
             //コメントフォームサブミット時処理
             onSubmitComment: function(e) {
-                var form = $(e.target),
-                    commentModel = new CommentModel( {
+                var form = $(e.target);
+
+                e.preventDefault();
+
+                this.model.set('new_comment', form.find('.comment-text').val());
+                form.find('.comment-text').val('');
+            },
+
+            //コメント時処理
+            renderComment: function(model) {
+                var commentModel = new CommentModel( {
                         id: idCreator.getId(),
-                        text: form.find('.comment-text').val(),
+                        text: model.get('new_comment'),
                         created_time: Math.floor(new Date().getTime() / 1000) + ''
                     });
 
                 //コメントmodelをリストに追加
                 this.commentListCollection.add(commentModel);
-                form.find('.comment-text').val('');
 
                 //並び替え
                 this.root.layout();
-                e.preventDefault();
+
             }
         });
 
