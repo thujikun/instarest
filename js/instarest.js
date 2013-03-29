@@ -20,11 +20,7 @@
             CommentListView;
 
         //Instagramの写真ごとのmodel
-        InstagramModel = Backbone.Model.extend({
-            defaults: {
-                new_comment: ''
-            }
-        });
+        InstagramModel = Backbone.Model.extend();
 
         //Instagramの写真ごとのmodelの配列
         InstagramCollection = Backbone.Collection.extend( {
@@ -49,14 +45,12 @@
                 'scrollEnd': 'getInstagram'
             },
 
-             model: InstagramModel,
-
             //初期処理。newするとまずこれが動く
             initialize: function() {
                 var self = this;
 
                 //Instagramの写真を取得した時のイベントリスナを設定
-                self.collection.on('reset', self.renderInstagram, self);
+                self.collection.on('add', self.renderInstagram, self);
 
                 //処理中フラグを下げる
                 self.processing = false;
@@ -89,6 +83,8 @@
                     self.processing = false;
                     //doneを実行
                     dfd.resolve();
+                    //並び替える
+                    self.layout();
                 });
 
                 return dfd.promise();
@@ -98,35 +94,28 @@
             template: _.template($('#instarest-template').html()),
 
             //写真リストをレンダリング
-            renderInstagram: function(collection) {
+            renderInstagram: function(model) {
                 var self = this,
                     html = [],
                     data,
-                    commentModel;
+                    item;
 
-                //写真ひとつひとつに対しての処理
-                collection.each(function(model) {
-                    data = model.toJSON();
-                    self.$el.append(self.template(data));
+                data = model.toJSON();
+                item = $($.parseHTML(self.template(data)));
+                self.$el.append(item);
 
-                    //写真ごとのviewを作成
-                    new InstagramView( {
-                        root: self,
-                        el: $('#' + data.id),
-                        model: model
-                    });
+                //写真ごとのviewを作成
+                new InstagramView( {
+                    root: self,
+                    el: $('#' + data.id),
+                    model: model
                 });
 
-                //並び替える
-                self.layout();
-
                 //時間をいい感じに表示
-                self.$el.find('.time').magicTime();
+                item.find('.time').magicTime();
 
                 //コメントエリアをリサイズ可能に設定
-                self.$el.find('.comment-text').resizeTextarea();
-
-                return this;
+                item.find('.comment-text').resizeTextarea();
             },
 
             //並び替え処理
@@ -158,34 +147,24 @@
                     el: this.$el.find('.comment-list'),
                     collection: this.commentListCollection
                 });
-
-                this.model.on('change:new_comment', this.renderComment, this);
             },
 
             //コメントフォームサブミット時処理
             onSubmitComment: function(e) {
-                var form = $(e.target);
-
-                e.preventDefault();
-
-                this.model.set('new_comment', form.find('.comment-text').val());
-                form.find('.comment-text').val('');
-            },
-
-            //コメント時処理
-            renderComment: function(model) {
-                var commentModel = new CommentModel( {
+                var form = $(e.target),
+                    commentModel = new CommentModel( {
                         id: idCreator.getId(),
-                        text: model.get('new_comment'),
+                        text: form.find('.comment-text').val(),
                         created_time: Math.floor(new Date().getTime() / 1000) + ''
                     });
 
                 //コメントmodelをリストに追加
                 this.commentListCollection.add(commentModel);
+                form.find('.comment-text').val('');
 
                 //並び替え
                 this.root.layout();
-
+                e.preventDefault();
             }
         });
 
@@ -195,8 +174,8 @@
             //デフォルトの値を設定
             defaults: {
                 from: {
-                    full_name: 'thujikun',
-                    profile_picture: 'https://si0.twimg.com/profile_images/2034815070/DSC_0014.jpg'
+                    full_name: 'Mickey',
+                    profile_picture: 'http://img2.blogs.yahoo.co.jp/ybi/1/cd/b8/riocimarron/folder/224110/img_224110_8995454_0?1257512276'
                 }
             }
         });
@@ -225,8 +204,6 @@
 
                 //時間をいい感じに表示
                 this.$el.find('.time').magicTime();
-
-                return this;
             }
 
         });
