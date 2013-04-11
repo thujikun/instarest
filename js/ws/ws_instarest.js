@@ -95,18 +95,17 @@
 
             //写真リストをレンダリング
             renderInstagram: function(model) {
-                var self = this,
-                    html = [],
+                var html = [],
                     data,
                     item;
 
                 data = model.toJSON();
-                item = $($.parseHTML(self.template(data)));
-                self.$el.append(item);
+                item = $($.parseHTML(this.template(data)));
+                this.$el.append(item);
 
                 //写真ごとのviewを作成
                 new InstagramView( {
-                    root: self,
+                    root: this,
                     el: $('#' + data.id),
                     model: model
                 });
@@ -116,6 +115,8 @@
 
                 //コメントエリアをリサイズ可能に設定
                 item.find('.comment-text').resizeTextarea();
+
+                return this;
             },
 
             //並び替え処理
@@ -204,6 +205,8 @@
 
                 //時間をいい感じに表示
                 this.$el.find('.time').magicTime();
+
+                return this;
             }
 
         });
