@@ -2,7 +2,7 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'ws/models',
+    'self/models',
     'shapeshift',
     'myplugin'
 ], function($, _, Backbone, models) {

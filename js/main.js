@@ -5,7 +5,7 @@ requirejs.config({
         backbone: 'lib/backbone-1.0.min',
         jqueryUI: 'lib/jquery-ui-1.10.0.custom.min',
         shapeshift: 'lib/jquery.shapeshift.min',
-        myplugin: 'ws/myplugin'
+        myplugin: 'self/myplugin'
     },
     shim: {
         'jquery': {
@@ -32,8 +32,8 @@ requirejs.config({
 
 
 require([
-    'ws/models',
-    'ws/views'
+    'self/models',
+    'self/views'
 ], function(models, views) {
     new views.InstagramListView({
         collection: new models.InstagramCollection()
