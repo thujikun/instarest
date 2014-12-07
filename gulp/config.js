@@ -35,7 +35,7 @@ module.exports = {
         },
         output: {
             filename: '[name].bundle.js',
-            publicPath: '/assets/'
+            publicPath: '/js/'
         },
         resolve: {
             extensions: ['', '.js'],
@@ -78,7 +78,7 @@ module.exports = {
         output: {
             path: path.join(current, 'app',  'js'),
             filename: '[name].bundle.js',
-            publicPath: 'js/'
+            publicPath: '/js/'
         },
         resolve: {
             extensions: ['', '.js'],
