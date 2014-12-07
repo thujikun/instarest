@@ -1,0 +1,12 @@
+<li id="<%= id %>">
+    <div class="profile"><img src="<%= from.profile_picture %>" alt="<%= from.full_name %>"></div>
+    <div class="comment">
+        <div class="user-name">
+            <%= from.full_name %>
+        </div>
+        <div class="text">
+            <%= text %>
+        </div>
+        <div class="time" data-time="<%= created_time %>"></div>
+    </div>
+</li>

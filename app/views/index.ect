@@ -1,0 +1,26 @@
+<% extend 'layouts/_base' %>
+
+<% block 'css': %>
+    <link rel="stylesheet" href="css/instarest.css">
+<% end %>
+
+<div id="container">
+    <div class="item-list-wrapper">
+        <div class="item-list"></div>
+        <div class="item-footer">
+            <div class="loader-wrap">
+                <div class="loader">
+                    <div class="loader-bar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% block 'js': %>
+    <% if @dev: %>
+    <script src="http://localhost:9000/js/top.bundle.js"></script>
+    <% else: %>
+    <script src="/js/top.bundle.js"></script>
+    <% end %>
+<% end %>

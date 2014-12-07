@@ -1,0 +1,13 @@
+<article class="item" id="<%= id %>">
+    <div class="image">
+        <img src="<%= images.low_resolution.url %>">
+    </div>
+    <ul class="comment-list">
+        <% comments.data.forEach(function(comment) {
+            var template = _.template(commentTmpl),
+                commentHtml = template(comment);
+        %>
+        <%= commentHtml %>
+        <% }); %>
+    </ul>
+</article>

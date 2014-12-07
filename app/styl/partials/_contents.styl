@@ -1,0 +1,104 @@
+.item-list
+    position relative
+    margin 41px auto 0
+    text-align center
+
+    .item
+        opacity 0
+        width 306px
+        margin 10px
+        padding 10px
+        position absolute
+        display inline-block
+        list-style none
+        background #eeffff
+        text-align left
+        box-shadow 0 0 3px 1px #cccccc
+        transition opacity 500ms ease-out
+
+        &.active
+            opacity 1
+
+        .image
+            width 306px
+            height 306px
+            position relative
+
+    .comment-list
+        > li
+            word-wrap break-word
+            background #fefefe
+            padding 10px
+            box-shadow 0 0 3px 1px #eeeeee
+
+        .profile
+            display inline-block
+            width 32px
+            height 32px
+            padding 1px
+            vertical-align top
+            overflow hidden
+
+            img
+                max-width 30px
+
+        .comment
+            position relative
+            display inline-block
+            width 240px
+            vertical-align top
+
+            .user-name
+                font-size 14px
+                font-weight bold
+
+            .text
+                font-size 12px
+
+            .time
+                position absolute
+                top 0
+                right 0
+                color #888888
+                font-size 12px
+
+    .comment-form
+        background #fefefe
+        padding 10px
+        box-shadow 0 0 3px 1px #eeeeee
+
+        .comment-text
+            resize none
+            overflow hidden
+
+        .comment-post
+            margin 0 0 20px 5px
+            vertical-align bottom
+
+.item-footer
+    min-height 30px
+
+    &.loading
+        .loader-wrap
+            position relative
+            text-align center
+
+        .loader
+            border-radius 35px
+            border 6px solid rgba(0,0,0,0.4)
+            width 35px
+            height 35px
+            display inline-block
+            vertical-align middle
+            position relative
+
+            .loader-bar
+                position absolute
+                top -6px
+                left -6px
+                bottom -6px
+                right -6px
+                border-radius 35px
+                border 6px solid transparent
+                border-top-color #000
+                animation spin 1s linear infinite
